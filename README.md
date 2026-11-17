@@ -4,7 +4,7 @@
 
 Recap is an AI-powered assistant that records audio, converts speech into text, and generates easy-to-read summaries using open-source AI models from Hugging Face.
 
-The goal of this project is to learn more about using open-source models that are available on Hugging Face. I wanted to try this after experiencing a lecture given by Niels Rogge (an engineer at Huggin Face).
+The goal of this project is to learn more about using open-source models that are available on Hugging Face. I wanted to try this after experiencing a lecture given by Niels Rogge (an engineer at Hugging Face), he talked about the strengths of the open-source models that exist.
 
 > **Project Status:** In Development
 
