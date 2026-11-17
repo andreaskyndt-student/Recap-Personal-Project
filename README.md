@@ -29,11 +29,13 @@ Planned:
 
 The project is planned to use the following technologies:
 
+| Technology | Purpose |
+|---|---|
 | Python | Main programming language |
 | Streamlit | User interface |
-| Faster-Whisper | Speech-To-Text transcription |
+| Faster-Whisper | Speech-to-text transcription |
 | CTranslate2 | Optimized model inference |
-| PyAv | Audio decoding |
+| PyAV | Audio decoding |
 | NVIDIA CUDA | GPU acceleration |
 
 ## AI Models
@@ -59,12 +61,12 @@ Recap follows a simple workflow:
 
 ## Getting Started
 
-Requirements:
+**Requirements:** (install these before trying the installation)
 - Python
 - An NVIDIA GPU with compatible CUDA libraries for the current GPU configuration.
 - Git
 
-Installation:
+**Installation:** (do the requirements first)
 - Clone the repository: git clone <your-repository-url>
 - Create a virtual environment: python -m venv .venv
 - Active a virtual environment on Windows PowerShell: .venv\Scripts\Activate.ps1
