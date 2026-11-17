@@ -2,7 +2,12 @@
 __pycache__/
 *.py[cod]
 .env
+.env.*
 .DS_Store
+Thumbs.db
 
 recordings/
 summaries/
+
+.vscode/
+.idea/
