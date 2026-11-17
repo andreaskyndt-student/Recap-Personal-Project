@@ -10,13 +10,16 @@ The goal of this project is to learn more about using open-source models that ar
 
 ## Features
 
-Planned features include:
+Implemented:
+- **Audio Recording** - Record audio directly through your microphone.
+- **Speech-to-Text** - Transcribe recordings using Whisper through Faster-Whisper.
+- **English Language Support** - Only for english language up until now.
+- **GPU Acceleration** - Run transcription using an NVIDIA GPU with CUDA support.
 
-- **Audio Recording** – Record speach directly through your microphone.
-- **Speech-to-Text** – Convert audio into text using a Hugging Face model (to be decided).
-- **AI Summarization** – Generate concise summaries using a Hugging Face model (to be decided).
-- **Editable Content** – Review and edit summaries.
-- **Export Summaries** – Download summaries as TXT or PDF files.
+Planned:
+- **AI Summarization** - Generate concise summaries from transcribed audio recordings.
+- **Editable Content** - Review and edit transcripts and summaries.
+- **Export Summaries** - Download summaries as TXT or PDF files.
 
 ## Demo
 
@@ -28,6 +31,10 @@ The project is planned to use the following technologies:
 
 | Python | Main programming language |
 | Streamlit | User interface |
+| Faster-Whisper | Speech-To-Text transcription |
+| CTranslate2 | Optimized model inference |
+| PyAv | Audio decoding |
+| NVIDIA CUDA | GPU acceleration |
 
 ## AI Models
 
@@ -35,7 +42,7 @@ Recap aims to use open-source models available through Hugging Face.
 
 | Model | Purpose |
 |---|---|
-| `openai/whisper-base` | Audio transcription |
+| `openai/whisper-base (faster-whisper)` | Audio transcription |
 | `google/flan-t5-base` | Text summarization |
 
 *The selected models may change during development depending on performance, language support and hardware requirements.*
@@ -47,14 +54,30 @@ Recap follows a simple workflow:
 1. **Record** – Start recording a lecture using your microphone.
 2. **Transcribe** – Whisper converts the recorded audio into text.
 3. **Summarize** – An AI language model processes the transcript and generates a summary.
-4. **Review** – View and edit the generated summary.
+4. **Review** – View and edit the transcript and generated summary.
 5. **Export** – Download the summary for later use.
+
+## Getting Started
+
+Requirements:
+- Python
+- An NVIDIA GPU with compatible CUDA libraries for the current GPU configuration.
+- Git
+
+Installation:
+- Clone the repository: git clone <your-repository-url>
+- Create a virtual environment: python -m venv .venv
+- Active a virtual environment on Windows PowerShell: .venv\Scripts\Activate.ps1
+- Install the dependencies: pip install -r requirements.txt
+- Start the application: streamlit run app.py
+
+**Note:** The current GPU configuration is developed and tested on Windows with an NVIDIA GPU. Other hardware and operating systems may require different configuration.
 
 ## Roadmap
 
-- [ ] Set up the project structure
-- [ ] Implement audio recording
-- [ ] Integrate Whisper for speech transcription
+- [x] Set up the project structure
+- [x] Implement audio recording
+- [x] Integrate Whisper for speech transcription
 - [ ] Integrate an AI summarization model
 - [ ] Build the Streamlit user interface
 - [ ] Display editable transcripts and summaries
