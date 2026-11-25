@@ -1,7 +1,7 @@
 import torch
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
-MODEL_NAME = "google/flan-t5-base"
+MODEL_NAME = "facebook/bart-large-cnn"
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -11,24 +11,8 @@ model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_NAME)
 model.to(device)
 
 def summarize_text(text) :
-    prompt = f"""
-        You are an expert lecture summarization assistant.
-
-        Create a clear and informative summary of the following lecture.
-        - Include the most important information.
-        - Remove repetitive information.
-        - Organize related topics together.
-        - Do not invent information.
-        - Write in the same language as the original text.
-
-        Lecture:
-        {text}
-
-        Summary:
-        """
-
     inputs = tokenizer(
-        prompt,
+        text,
         return_tensors="pt",
         max_length=1024,
         truncation=True
@@ -39,8 +23,7 @@ def summarize_text(text) :
             **inputs,
             max_new_tokens=200,
             num_beams=4,
-            repetition_penalty=1.5,
-            no_repeat_ngram_size=3,
+            repetition_penalty=2.0,
             early_stopping=True,
         )
 

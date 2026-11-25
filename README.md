@@ -47,7 +47,7 @@ Recap aims to use open-source models available through Hugging Face.
 | `openai/whisper-base (faster-whisper)` | Audio transcription |
 | `google/flan-t5-base` | Text summarization |
 
-*The selected models may change during development depending on performance, language support and hardware requirements.*
+*The selected models are not the best, but due to my computer's capabilities I had to pick these!*
 
 ## How It Works
 
