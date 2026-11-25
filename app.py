@@ -3,6 +3,7 @@ from pathlib import Path
 from datetime import datetime
 from models.transcription import transcribe_audio
 from models.summarization import summarize_text
+from utils.document_export import create_word_document, create_pdf_document
 
 st.set_page_config(
     page_title="Recap",
@@ -67,3 +68,27 @@ if st.session_state.audio_file_path:
                 value=st.session_state.summary,
                 height=200
             )
+
+            st.divider()
+            st.subheader("Download your notes")
+
+            word_file = create_word_document(st.session_state.transcription, st.session_state.summary)
+            pdf_file = create_pdf_document(st.session_state.transcription, st.session_state.summary)
+
+            col1, col2 = st.columns(2)
+
+            with col1:
+                st.download_button(
+                    label="Download as Word Document",
+                    data=word_file,
+                    file_name="recap_notes.docx",
+                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                )
+
+            with col2:
+                st.download_button(
+                    label="Download as PDF Document",
+                    data=pdf_file,
+                    file_name="recap_notes.pdf",
+                    mime="application/pdf"
+                )
