@@ -23,9 +23,7 @@ Planned:
 
 ## Demo
 
-<video src="Recap-Example-Video.mp4" controls width="720">
-  Your browser does not support embedded videos. You can [download the demo video](Recap-Example-Video.mp4).
-</video>
+[Watch the demo video](Recap-Example-Video.mp4)
 
 ## Tech Stack
 
