@@ -50,7 +50,11 @@ if st.session_state.audio_file_path:
 
         if st.session_state.transcription:
             st.subheader("Transcription")
-            st.write(st.session_state.transcription)
+            st.session_state.transcription = st.text_area(
+                "Edit your transcription:",
+                value=st.session_state.transcription,
+                height=300
+            )
 
             if st.button("Summarize Transcription"):
                 with st.spinner("Our AI is summarizing your transcription ..."):
@@ -58,4 +62,8 @@ if st.session_state.audio_file_path:
 
         if st.session_state.summary:
             st.subheader("Summary")
-            st.write(st.session_state.summary)
+            st.session_state.summary = st.text_area(
+                "Edit your summary:",
+                value=st.session_state.summary,
+                height=200
+            )
