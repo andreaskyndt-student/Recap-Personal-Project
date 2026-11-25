@@ -2,6 +2,7 @@ import streamlit as st
 from pathlib import Path
 from datetime import datetime
 from models.transcription import transcribe_audio
+from models.summarization import summarize_text
 
 st.set_page_config(
     page_title="Recap",
@@ -11,6 +12,12 @@ st.set_page_config(
 
 if "audio_file_path" not in st.session_state:
     st.session_state.audio_file_path = None
+
+if "transcription" not in st.session_state:
+    st.session_state.transcription = None
+
+if "summary" not in st.session_state:
+    st.session_state.summary = None
 
 st.title("Recap")
 st.write("Record your audio, and turn it into a summary using AI.")
@@ -35,9 +42,20 @@ if audio is not None:
 st.divider()
 
 if st.session_state.audio_file_path:
-    if st.button("Transcribe Recording"):
-        with st.spinner("Our AI is working on your recording ..."):
-            transcription = transcribe_audio(st.session_state.audio_file_path)
+        if st.button("Transcribe Recording"):
+            with st.spinner("Our AI is working on your recording ..."):
+                st.session_state.transcription = transcribe_audio(st.session_state.audio_file_path)
 
-        st.subheader("Transcription")
-        st.write(transcription)
+                st.session_state.summary = None
+
+        if st.session_state.transcription:
+            st.subheader("Transcription")
+            st.write(st.session_state.transcription)
+
+            if st.button("Summarize Transcription"):
+                with st.spinner("Our AI is summarizing your transcription ..."):
+                    st.session_state.summary = summarize_text(st.session_state.transcription)
+
+        if st.session_state.summary:
+            st.subheader("Summary")
+            st.write(st.session_state.summary)
